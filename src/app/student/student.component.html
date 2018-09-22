@@ -1,0 +1,36 @@
+<div *ngIf="!editMode; else studentForm">
+  <h1>Student: {{student.name}}</h1>
+  <div>
+    <span>Date Of Birth: </span><span>{{student.dateOfBirth | date: shortDate}}</span>
+  </div>
+  <div>
+    <span>Gender: </span>
+    <span *ngIf="student.gender; else male">F</span>
+    <ng-template #male>
+      <span>M</span>
+    </ng-template>
+  </div>
+  <button (click)='editMode=!editMode'>Edit</button>
+</div>
+
+<ng-template #studentForm>
+    <h1>Edit Student</h1>
+  
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" class="form-control" id="" placeholder="Input field" value='{{student.name}}' #nameField>
+    </div>
+    <div class="form-group">
+      <label for="">Date Of Birth</label>
+      <input type="datetime" class="form-control" id="" placeholder="Input field" value='{{student.dateOfBirth}}' #dateOfBirthField>
+    </div>
+    <div class="form-group">
+      <label for="">Gender</label>
+      <select #genderField (change)='genderChanged(genderField.value)'>
+        <option value='0' [selected]='!student.gender'>M</option>
+        <option value='1' [selected]='student.gender'>Ж</option>
+      </select>
+    </div>
+    <button (click)='cancelEdit()'>Cancel</button>
+    <button class="btn btn-primary" (click)='saveChanges(nameField.value,dateOfBirthField.value,genderField.value)'>Save</button>
+</ng-template>

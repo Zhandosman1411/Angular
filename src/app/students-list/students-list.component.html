@@ -1,0 +1,5 @@
+<h1>Students</h1>
+<ul>
+  <li *ngFor="let student of students" (click)='selectStudent(student)'> {{ student.name }}</li>
+</ul>
+<app-student *ngIf="selectedStudent" [student]='selectedStudent'></app-student>
