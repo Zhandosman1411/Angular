@@ -16,4 +16,12 @@ constructor() { }
 getStudents() {
     return this.students;
   }
+
+  // addStudent(name: string) {
+  //   this.students.push({ id: Math.max(...this.students.map(s => s.id)) + 1 , name: name, group: 'VTiPO'});
+  // }
+  // deleteStudent(studentId: number) {
+  //   this.students = this.students.filter(s => s.id !== studentId);
+  // }
+
 }
